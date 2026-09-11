@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+  <meta name="description" content="Aprende a tejer 21 modelos de pulseras de hilo paso a paso">
+  <meta name="theme-color" content="#6B3410">
+  <title>Pulseras con Hilos</title>
+  <link rel="stylesheet" href="estilos.css">
+  <link rel="icon" type="image/png" href="iconos/icono-192.png">
+  <link rel="manifest" href="manifest.json">
+  <link rel="apple-touch-icon" href="iconos/icono-192.png">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="apple-mobile-web-app-title" content="Pulseras">
+</head>
+<body>
+  <header class="cabecera">
+    <div class="cabecera-texto">
+      <h1>Pulseras con Hilos</h1>
+      <p class="subtitulo">21 modelos · Paso a paso · Sin conexión</p>
+    </div>
+    <div class="cabecera-botones">
+      <button id="btn-ayuda" class="btn-cabecera" aria-label="Ayuda">❓ Ayuda</button>
+      <button id="btn-imprimir" class="btn-cabecera" aria-label="Imprimir">🖨 Imprimir</button>
+    </div>
+  </header>
+
+  <main class="contenedor">
+    <aside class="panel-izquierdo">
+      <h2 class="titulo-panel">Modelos disponibles</h2>
+      <ul id="lista-pulseras" class="lista-pulseras"></ul>
+    </aside>
+
+    <section class="panel-derecho">
+      <div class="pulsera-header">
+        <h2 id="nombre-pulsera"></h2>
+        <p id="info-pulsera" class="info-pulsera"></p>
+      </div>
+
+      <div class="pulsera-contenido">
+        <section class="seccion">
+          <h3 class="titulo-seccion">🧰 Materiales necesarios</h3>
+          <ul id="lista-materiales" class="lista-materiales"></ul>
+        </section>
+
+        <section class="seccion">
+          <h3 class="titulo-seccion">📝 Paso a paso detallado</h3>
+          <ol id="lista-pasos" class="lista-pasos"></ol>
+        </section>
+
+        <section class="seccion">
+          <h3 class="titulo-seccion">💡 Trucos y consejos</h3>
+          <ul id="lista-trucos" class="lista-trucos"></ul>
+        </section>
+      </div>
+    </section>
+  </main>
+
+  <!-- Modal de ayuda -->
+  <div id="modal-ayuda" class="modal oculto">
+    <div class="modal-contenido">
+      <h2>📖 Manual de uso</h2>
+      <p>Bienvenido a <strong>Pulseras con Hilos</strong>. Esta app te ayuda a aprender a tejer pulseras de hilo paso a paso.</p>
+      <h3>Cómo usar la app</h3>
+      <ol>
+        <li>Elige un modelo en la lista.</li>
+        <li>Lee los materiales necesarios.</li>
+        <li>Sigue los pasos en orden.</li>
+        <li>Consulta los trucos al final.</li>
+      </ol>
+      <h3>Consejos rápidos</h3>
+      <ul>
+        <li>Usa un mechero para rematar los cabos.</li>
+        <li>Mantén tensión constante al hacer nudos.</li>
+        <li>Corta más hilo del que crees necesario.</li>
+      </ul>
+      <button id="btn-cerrar-modal" class="btn-primario">Cerrar</button>
+    </div>
+  </div>
+
+  <script src="datos.js"></script>
+  <script src="app.js"></script>
+  <script>
+    if ("serviceWorker" in navigator) {
+      window.addEventListener("load", () => {
+        navigator.serviceWorker.register("service-worker.js")
+          .then((reg) => console.log("[PWA] Service Worker registrado:", reg.scope))
+          .catch((err) => console.error("[PWA] Error:", err));
+      });
+    }
+  </script>
+</body>
+</html>
