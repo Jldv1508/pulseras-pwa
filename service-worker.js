@@ -1,7 +1,7 @@
 // Service Worker - Pulseras con Hilos
 // Hace que la app funcione sin conexión tras la primera visita
 
-const CACHE_NAME = "pulseras-v1";
+const CACHE_NAME = "pulseras-v4";
 const ARCHIVOS_CACHE = [
   "./",
   "./index.html",
@@ -10,7 +10,12 @@ const ARCHIVOS_CACHE = [
   "./datos.js",
   "./manifest.json",
   "./iconos/icono-192.png",
-  "./iconos/icono-512.png"
+  "./iconos/icono-512.png",
+  "./infografias/nudo-basico-macrame.jpg",
+  "./infografias/pulsera-celta-nudo-de-serpiente.jpg",
+  "./infografias/pulsera-chevron-espiga.jpg",
+  "./infografias/pulsera-espiral.jpg",
+  "./infografias/pulsera-trenzada-3-hilos.jpg"
 ];
 
 // Instalación: cachear los archivos

@@ -133,6 +133,21 @@ html, body {
   overflow-y: auto;
   max-height: calc(100vh - 130px);
 }
+/* Infografía de la pulsera (si existe) */
+.infografia-pulsera {
+  width: 100%;
+  max-width: 100%;
+  height: auto;
+  border-radius: 10px;
+  border: 1px solid var(--borde);
+  box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+  margin-bottom: 20px;
+  display: block;
+}
+
+.infografia-pulsera.oculta {
+  display: none;
+}
 
 .pulsera-header {
   margin-bottom: 20px;

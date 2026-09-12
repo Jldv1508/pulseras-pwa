@@ -20,6 +20,15 @@ document.addEventListener("DOMContentLoaded", () => {
     listaPulseras.appendChild(li);
   });
 
+  function slugify(texto) {
+    return texto
+      .normalize("NFD")
+      .replace(/[\u0300-\u036f]/g, "")
+      .toLowerCase()
+      .replace(/[^a-z0-9]+/g, "-")
+      .replace(/^-|-$/g, "");
+  }
+
   function mostrarPulsera(nombre) {
     const datos = PULSERAS[nombre];
     if (!datos) return;
@@ -27,6 +36,23 @@ document.addEventListener("DOMContentLoaded", () => {
     document.querySelectorAll(".lista-pulseras li").forEach(li => {
       li.classList.toggle("activa", li.dataset.nombre === nombre);
     });
+
+    // Mostrar infografia si existe
+    const slug = slugify(nombre);
+    let imgInfografia = document.getElementById("infografia-pulsera");
+    if (!imgInfografia) {
+      imgInfografia = document.createElement("img");
+      imgInfografia.id = "infografia-pulsera";
+      imgInfografia.className = "infografia-pulsera";
+      imgInfografia.alt = "Infografia de " + nombre;
+      const header = document.querySelector(".pulsera-header");
+      header.parentNode.insertBefore(imgInfografia, header.nextSibling);
+    }
+    imgInfografia.src = "infografias/" + slug + ".jpg";
+    imgInfografia.classList.remove("oculta");
+    imgInfografia.onerror = () => {
+      imgInfografia.classList.add("oculta");
+    };
 
     nombrePulsera.textContent = "📿 " + nombre;
     infoPulsera.textContent = datos.dificultad + "  ·  " + datos.tiempo;
