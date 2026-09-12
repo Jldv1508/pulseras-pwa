@@ -1,7 +1,7 @@
 // Service Worker - Pulseras con Hilos
 // Hace que la app funcione sin conexión tras la primera visita
 
-const CACHE_NAME = "pulseras-v4";
+const CACHE_NAME = "pulseras-v5";
 const ARCHIVOS_CACHE = [
   "./",
   "./index.html",

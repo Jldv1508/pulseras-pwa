@@ -107,4 +107,46 @@ document.addEventListener("DOMContentLoaded", () => {
   btnImprimir.addEventListener("click", () => window.print());
 
   if (nombres.length > 0) mostrarPulsera(nombres[0]);
+
+  // ============================================================
+  //  LIGHTBOX - Zoom de infografías
+  // ============================================================
+  const lightbox = document.getElementById("lightbox");
+  const lightboxImg = document.getElementById("lightbox-img");
+  const btnCerrarLightbox = lightbox.querySelector(".lightbox-cerrar");
+
+  document.addEventListener("click", (e) => {
+    if (e.target.classList.contains("infografia-pulsera")) {
+      const src = e.target.src;
+      if (src && !e.target.classList.contains("oculta")) {
+        lightboxImg.src = src;
+        lightbox.classList.add("activo");
+        document.body.style.overflow = "hidden";
+      }
+    }
+  });
+
+  function cerrarLightbox() {
+    lightbox.classList.remove("activo");
+    document.body.style.overflow = "";
+    setTimeout(() => { lightboxImg.src = ""; }, 300);
+  }
+
+  btnCerrarLightbox.addEventListener("click", (e) => {
+    e.stopPropagation();
+    cerrarLightbox();
+  });
+
+  lightbox.addEventListener("click", (e) => {
+    if (e.target === lightbox) {
+      cerrarLightbox();
+    }
+  });
+
+  document.addEventListener("keydown", (e) => {
+    if (e.key === "Escape" && lightbox.classList.contains("activo")) {
+      cerrarLightbox();
+    }
+  });
+
 });
